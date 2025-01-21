@@ -1,108 +1,63 @@
-# Proyecto de Infraestructura con Terraform
+¡Claro! Aquí tienes una versión modificada del texto, formateada para un archivo README de GitHub, con algunas mejoras en la claridad y estructura:
 
-Este repositorio contiene la configuración necesaria para crear y gestionar la infraestructura utilizando **Terraform**. A través de los archivos de configuración de Terraform, puedes automatizar la creación, modificación y destrucción de la infraestructura en la nube.
+README: Proyecto de Infraestructura con Terraform
+Descripción
+Este repositorio contiene la configuración de Terraform necesaria para desplegar y gestionar una infraestructura en la nube de manera automatizada. Los archivos de configuración definen los recursos a crear (máquinas virtuales, redes, etc.) y permiten realizar cambios de forma segura y reproducible.
 
-## Requisitos
+Requisitos Previos
+Terraform: Para gestionar la infraestructura como código. Descarga la última versión desde https://www.terraform.io/downloads.html.
+AWS CLI: Si estás utilizando AWS, es necesario para interactuar con los servicios de AWS. Instala la AWS CLI siguiendo las instrucciones en https://aws.amazon.com/cli/.
+Git: Para clonar y gestionar el repositorio. Descarga e instala Git desde https://git-scm.com/.
+Configuración Inicial
+Clonar el repositorio:
+Bash
 
-Antes de comenzar, asegúrate de tener instalados los siguientes programas en tu máquina:
-
-- **[Terraform](https://www.terraform.io/downloads.html)**: Para gestionar la infraestructura como código.
-- **[AWS CLI](https://aws.amazon.com/cli/)** (si usas AWS): Para interactuar con los servicios de AWS desde la línea de comandos.
-- **[Git](https://git-scm.com/)**: Para clonar y gestionar el repositorio.
-
-## Configuración
-
-### 1. Clonar el repositorio.
-
-Primero, clona el repositorio y accede al directorio del proyecto:
-
-```bash
 git clone https://github.com/Skarvy/devopspipleline
 cd terraformdeploy
-2. Configuración de credenciales AWS
-Si estás utilizando AWS, asegúrate de tener configuradas tus credenciales ejecutando:
+Configurar credenciales AWS: Si estás utilizando AWS, configura tus credenciales ejecutando:
+Bash
 
-bash
-Copiar
-Editar
 aws configure
-Este comando te pedirá el Access Key ID, Secret Access Key, la región y el formato de salida.
+Se te solicitará el Access Key ID, Secret Access Key, región y formato de salida.
+Inicializar Terraform:
+Bash
 
-3. Inicializar el proyecto de Terraform
-Terraform requiere ser inicializado para descargar los proveedores y módulos necesarios. Ejecútalo dentro del directorio del proyecto:
-
-bash
-Copiar
-Editar
 terraform init
-4. Revisión de la infraestructura a crear
-Antes de aplicar los cambios, revisa lo que se va a crear o modificar ejecutando:
+Este comando descarga los proveedores y módulos necesarios.
+Despliegue de la Infraestructura
+Revisar el plan:
+Bash
 
-bash
-Copiar
-Editar
 terraform plan
-Este comando te mostrará los cambios que Terraform realizará en la infraestructura.
+Este comando muestra un resumen de los cambios que se realizarán.
+Aplicar los cambios:
+Bash
 
-5. Aplicar la configuración de Terraform
-Para aplicar los cambios y crear la infraestructura definida en los archivos de configuración de Terraform, ejecuta:
-
-bash
-Copiar
-Editar
 terraform apply
-Terraform te pedirá confirmación antes de proceder. Ingresa yes para continuar.
+Confirma la operación cuando se te solicite.
+Verificar la infraestructura: Una vez aplicado, Terraform mostrará la salida con información relevante, como el ID de la instancia y su IP pública.
+Configuración del Entorno Docker
+Conectarse a la instancia:
+Bash
 
-6. Verificación de la infraestructura
-Al finalizar la ejecución de terraform apply, Terraform te mostrará la salida con información relevante, como:
-
-bash
-Copiar
-Editar
-Outputs:
-  instance_id = "i-051efcee7f1a4bbba"
-  instance_public_ip = "3.84.163.15"
-Accede a la instancia EC2 utilizando el IP público mostrado en la salida, junto con la clave privada configurada previamente para tu instancia.
-
-7. Configuración del entorno Docker
-Conéctate a tu instancia EC2 a través de SSH:
-
-bash
-Copiar
-Editar
 ssh -i /ruta/a/tu/clave.pem ec2-user@<IP_publica>
-Luego, añade el usuario ec2-user al grupo Docker para poder ejecutar comandos de Docker sin necesidad de sudo:
+Agregar el usuario al grupo Docker:
+Bash
 
-bash
-Copiar
-Editar
 sudo usermod -aG docker ec2-user
-Reinicia la conexión SSH para que los cambios tengan efecto.
+Reinicia la conexión SSH.
+Levantar los contenedores:
+Bash
 
-8. Levantar los contenedores Docker
-Una vez dentro de la instancia, navega al directorio de la aplicación y levanta los contenedores utilizando Docker Compose:
-
-bash
-Copiar
-Editar
 cd app
 docker-compose up -d
-Esto levantará los contenedores de Jenkins y SonarQube.
-
-9. Acceder a la interfaz web
-Para acceder a la interfaz web de Jenkins y SonarQube, abre un navegador y entra a la dirección IP pública de tu instancia EC2, agregando el puerto correspondiente (por ejemplo, 8080 para Jenkins):
-
-bash
-Copiar
-Editar
-http://<IP_publica>:8080
-Aquí podrás configurar tu pipeline de CI/CD.
-
+Acceso a las Aplicaciones
+Jenkins: http://<IP_publica>:8080
+SonarQube: ... (Especificar el puerto si es diferente)
 Destrucción de la Infraestructura
-Si deseas destruir la infraestructura creada por Terraform, ejecuta el siguiente comando:
+Para eliminar la infraestructura creada:
 
-bash
-Copiar
-Editar
+Bash
+
 terraform destroy
-Terraform te pedirá confirmación antes de proceder. Ingresa yes para continuar y destruir la infraestructura.
+Estructura del Repositorio
