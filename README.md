@@ -24,8 +24,6 @@ cd terraformdeploy
 Si estás utilizando AWS, asegúrate de tener configuradas tus credenciales ejecutando:
 
 ```bash
-Copiar
-Editar
 aws configure
 ```
 Este comando te pedirá el Access Key ID, Secret Access Key, la región y el formato de salida.
@@ -34,16 +32,12 @@ Este comando te pedirá el Access Key ID, Secret Access Key, la región y el for
 Terraform requiere ser inicializado para descargar los proveedores y módulos necesarios. Ejecútalo dentro del directorio del proyecto:
 
 ```bash
-Copiar
-Editar
 terraform init
 ```
 ### 4. Revisión de la infraestructura a crear
 Antes de aplicar los cambios, revisa lo que se va a crear o modificar ejecutando:
 
 ```bash
-Copiar
-Editar
 terraform plan
 ```
 Este comando te mostrará los cambios que Terraform realizará en la infraestructura.
@@ -52,8 +46,6 @@ Este comando te mostrará los cambios que Terraform realizará en la infraestruc
 Para aplicar los cambios y crear la infraestructura definida en los archivos de configuración de Terraform, ejecuta:
 
 ```bash
-Copiar
-Editar
 terraform apply
 ```
 Terraform te pedirá confirmación antes de proceder. Ingresa yes para continuar.
@@ -71,15 +63,11 @@ Accede a la instancia EC2 utilizando el IP público mostrado en la salida, junto
 Conéctate a tu instancia EC2 a través de SSH:
 
 ```bash
-Copiar
-Editar
 ssh -i /ruta/a/tu/clave.pem ec2-user@<IP_publica>
 ```
 Luego, añade el usuario ec2-user al grupo Docker para poder ejecutar comandos de Docker sin necesidad de sudo:
 
 ```bash
-Copiar
-Editar
 sudo usermod -aG docker ec2-user
 ```
 Reinicia la conexión SSH para que los cambios tengan efecto.
@@ -88,8 +76,6 @@ Reinicia la conexión SSH para que los cambios tengan efecto.
 Una vez dentro de la instancia, navega al directorio de la aplicación y levanta los contenedores utilizando Docker Compose:
 
 ```bash
-Copiar
-Editar
 cd app
 docker-compose up -d
 ```
@@ -99,8 +85,6 @@ Esto levantará los contenedores de Jenkins y SonarQube.
 Para acceder a la interfaz web de Jenkins y SonarQube, abre un navegador y entra a la dirección IP pública de tu instancia EC2, agregando el puerto correspondiente (por ejemplo, 8080 para Jenkins):
 
 ```bash
-Copiar
-Editar
 http://<IP_publica>:8080
 ```
 Aquí podrás configurar tu pipeline de CI/CD.
@@ -109,8 +93,6 @@ Destrucción de la Infraestructura
 Si deseas destruir la infraestructura creada por Terraform, ejecuta el siguiente comando:
 
 ```bash
-Copiar
-Editar
 terraform destroy
 ```
 Terraform te pedirá confirmación antes de proceder. Ingresa yes para continuar y destruir la infraestructura.
