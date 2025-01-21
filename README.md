@@ -1,19 +1,22 @@
-Proyecto de Infraestructura con Terraform
-Este repositorio contiene la configuración necesaria para crear y gestionar la infraestructura utilizando Terraform. A través de los archivos de configuración de Terraform, puedes automatizar la creación, modificación y destrucción de la infraestructura en la nube.
+# Proyecto de Infraestructura con Terraform
 
-Requisitos
+Este repositorio contiene la configuración necesaria para crear y gestionar la infraestructura utilizando **Terraform**. A través de los archivos de configuración de Terraform, puedes automatizar la creación, modificación y destrucción de la infraestructura en la nube.
+
+## Requisitos
+
 Antes de comenzar, asegúrate de tener instalados los siguientes programas en tu máquina:
 
-Terraform: Para gestionar la infraestructura como código.
-AWS CLI (si usas AWS): Para interactuar con los servicios de AWS desde la línea de comandos.
-Git: Para clonar y gestionar el repositorio.
-Configuración
-1. Clonar el repositorio
+- **[Terraform](https://www.terraform.io/downloads.html)**: Para gestionar la infraestructura como código.
+- **[AWS CLI](https://aws.amazon.com/cli/)** (si usas AWS): Para interactuar con los servicios de AWS desde la línea de comandos.
+- **[Git](https://git-scm.com/)**: Para clonar y gestionar el repositorio.
+
+## Configuración
+
+### 1. Clonar el repositorio
+
 Primero, clona el repositorio y accede al directorio del proyecto:
 
-bash
-Copiar
-Editar
+```bash
 git clone https://github.com/Skarvy/devopspipleline
 cd terraformdeploy
 2. Configuración de credenciales AWS
@@ -68,7 +71,7 @@ bash
 Copiar
 Editar
 ssh -i /ruta/a/tu/clave.pem ec2-user@<IP_publica>
-Luego, añade el usuario ec2-user al grupo docker para poder ejecutar comandos de Docker sin necesidad de sudo:
+Luego, añade el usuario ec2-user al grupo Docker para poder ejecutar comandos de Docker sin necesidad de sudo:
 
 bash
 Copiar
@@ -89,7 +92,7 @@ Esto levantará los contenedores de Jenkins y SonarQube.
 9. Acceder a la interfaz web
 Para acceder a la interfaz web de Jenkins y SonarQube, abre un navegador y entra a la dirección IP pública de tu instancia EC2, agregando el puerto correspondiente (por ejemplo, 8080 para Jenkins):
 
-arduino
+bash
 Copiar
 Editar
 http://<IP_publica>:8080
