@@ -12,7 +12,7 @@ Antes de comenzar, asegúrate de tener instalados los siguientes programas en tu
 
 ## Configuración
 
-### 1. Clonar el repositorio
+### 1. Clonar el repositorio.
 
 Primero, clona el repositorio y accede al directorio del proyecto:
 
